@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Panel administracyjny{% endblock %}</title>
+        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+    </head>
+    <body>
+        Administracja<hr>
+        <nav style="display: flex; justify-content: space-around; margin: 15px 0">
+            <a href="{{ path('app_view_admin_dashboard_get-index') }}">Dashboard</a>
+            <a href="{{ path('app_view_admin_cars_get-cars-view') }}">Pojazdy</a>
+        </nav>
+        {% block adminBody %}{% endblock %}
+    </body>
+</html>

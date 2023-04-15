@@ -1,0 +1,35 @@
+{% extends 'admin/view/car/carBase.html.twig' %}
+
+{% block carBody %}
+    Szczegóły pojazdu o numerze id: {{ car.id }}<hr><hr><hr>
+    {% if car.status == "ACTIVE" %}
+        <div style="background-color: green;color: white; padding: 5px; border-radius: 5px; text-align: center;">
+            Pojazd gotowy do wydania.
+        </div>
+    {% endif %}
+
+    {% if car.status == "BLOCKED" %}
+        <div style="background-color: orange;padding: 5px; border-radius: 5px; text-align: center;">
+            Pojazd tymczasowo zablokowany.
+        </div>
+    {% endif %}
+
+    {% if car.status == "ARCHIVED" %}
+        <div style="background-color: red;padding: 5px; border-radius: 5px; text-align: center;">
+            Pojazd przeniesiony do archiwum.
+        </div>
+    {% endif %}
+
+    <div style="text-align: center;margin: 15px 0;">
+        <button style="background-color: orange;">Edytuj</button>
+        <a href="{{ path('app_view_admin_cars_remove-car-by-id', {id: car.id}) }}"><button style="background-color: red; color: white;">Usuń</button></a>
+    </div>
+
+    <span style="font-size: 125%;">{{ car.brand }} {{ car.model }}</span> ( Segment: {{ car.segment }} )<br>
+    Vin: {{ car.vin }}<br>
+    Przebieg: {{ car.mileage }} km<br>
+    Rodzaj paliwa: {{ car.fuel }}<br>
+    Liczba miejsc: {{ car.numberOfSeats }}<br>
+    Liczba drzwi: {{ car.numberOfDoors }}<br>
+    Rodzaj zabudowy: {{ car.bodyType }}<br>
+{% endblock %}

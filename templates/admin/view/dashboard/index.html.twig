@@ -1,0 +1,29 @@
+{% extends 'admin/view/dashboard/dashboardBase.html.twig' %}
+
+{% block dashboardBody %}
+    <section class="information-about-class" style="background-color: rgba(170,170,170,0.26); padding: 15px; border-radius: 15px;">
+        Informacje o pojazdach
+        <div style="display: flex; justify-content: center; text-align: center;">
+            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
+                WSZYSTKIE POJAZDY<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ allCars }}</span><br>
+                <a href="{{ path('app_view_admin_cars_get-cars-view') }}">Pokaż</a>
+            </div>
+            <div style="background-color: green;color: white; margin: 15px; padding: 15px; border-radius: 15px;">
+                AKTYWNE POJAZDY<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ activeCars }}</span><br>
+                <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ACTIVE">Pokaż</a>
+            </div>
+            <div style="background-color: #e0b534; margin: 15px; padding: 15px; border-radius: 15px;">
+                ZABLOKOWANE POJAZDY<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ blockedCars }}</span><br>
+                <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=BLOCKED">Pokaż</a>
+            </div>
+            <div style="background-color: #fd5714; margin: 15px; padding: 15px; border-radius: 15px;">
+                POJAZDY W ARCHIWUM<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ archivedCars }}</span><br>
+                <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ARCHIVED">Pokaż</a>
+            </div>
+        </div>
+    </section> <!-- .information-about-cars -->
+{% endblock %}
