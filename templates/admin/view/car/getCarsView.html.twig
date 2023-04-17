@@ -1,0 +1,36 @@
+{% extends 'admin/view/car/carBase.html.twig' %}
+
+{% block carBody %}
+    {{ msg }} ({{ counter }})<br>
+
+    {% if cars %}
+        <table style="width: 100%; text-align: center;">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Marka</th>
+                    <th>Model</th>
+                    <th>Nadwozie</th>
+                    <th>Segment</th>
+                    <th colspan="3">Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.id }}</td>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.bodyType }}</td>
+                    <td>{{ car.segment }}</td>
+                    <td><a href="{{ path('app_view_admin_cars_get-car-details-view', {id: car.id}) }}"><button>Pokaż</button></a></td>
+                    <td><a href="{{ path('app_view_admin_cars_edit-car-by-id', {id: car.id}) }}"><button>Edytuj</button></a></td>
+                    <td><a href="{{ path('app_view_admin_cars_remove-car-by-id', {id: car.id}) }}"><button>Usuń</button></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        Brak pojazdów do wyświetlenia.
+    {% endif %}
+{% endblock %}
