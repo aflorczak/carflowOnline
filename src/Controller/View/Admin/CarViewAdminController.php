@@ -2,8 +2,13 @@
 
 namespace App\Controller\View\Admin;
 
+use App\Entity\Car;
+use App\Form\Car\CarType;
 use App\Service\CarService;
+use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,6 +21,38 @@ class CarViewAdminController extends AbstractController
     public function __construct(CarService $service)
     {
         $this->service = $service;
+    }
+
+    #[Route("/new", name: "app_view_admin_cars_new-cars-view", methods: ['GET', 'POST'])]
+    public function newCarsView(Request $request): Response
+    {
+        $car = new Car();
+//        $car->setStatus("ACTIVE");
+//        $car->setBrand("Opel");
+//        $car->setModel("Calibra");
+//        $car->setVin("11111111111111111");
+//        $car->setMileage(214);
+//        $car->setNumberOfSeats(5);
+//        $car->setNumberOfDoors(5);
+//        $car->setFuel("Pb95");
+//        $car->setBodyType("CABRIO");
+//        $car->setSegment("D");
+
+        $form = $this->createForm(CarType::class, $car);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $car = $form->getData();
+
+            $this->service->createNewCar($car);
+
+            return $this->redirectToRoute('app_view_admin_cars_get-cars-view');
+        }
+
+        return $this->render('admin/view/car/newCar.html.twig', [
+            "form" => $form->createView()
+        ]);
+
     }
 
     #[Route("", name: "app_view_admin_cars_get-cars-view", methods: ['GET'])]
@@ -65,6 +102,28 @@ class CarViewAdminController extends AbstractController
 
         return $this->render('admin/view/car/carDetails.html.twig', [
             "car" => $car
+        ]);
+    }
+
+    #[Route('/{id}/edit', name: 'app_view_admin_cars_edit-car-by-id', methods: ['GET', 'POST'])]
+    public function editCarById(int $id, Request $request): Response
+    {
+        $car = $this->service->getCarById($id);
+
+        $form = $this->createForm(CarType::class, $car);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $car = $form->getData();
+
+            $this->service->createNewCar($car);
+
+            return $this->redirectToRoute('app_view_admin_cars_get-cars-view');
+        }
+
+        return $this->render('admin/view/car/editCar.html.twig', [
+            "id" => $car->getId(),
+            "form" => $form->createView()
         ]);
     }
 

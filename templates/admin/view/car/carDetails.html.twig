@@ -21,7 +21,7 @@
     {% endif %}
 
     <div style="text-align: center;margin: 15px 0;">
-        <button style="background-color: orange;">Edytuj</button>
+        <a href="{{ path('app_view_admin_cars_edit-car-by-id', {id: car.id}) }}"><button style="background-color: orange;">Edytuj</button></a>
         <a href="{{ path('app_view_admin_cars_remove-car-by-id', {id: car.id}) }}"><button style="background-color: red; color: white;">Usuń</button></a>
     </div>
 

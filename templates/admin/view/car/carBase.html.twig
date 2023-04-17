@@ -7,7 +7,7 @@
         <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ACTIVE">Aktywne pojazdy</a>
         <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=BLOCKED">Zablokowane pojazdy</a>
         <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ARCHIVED">Zarchiwizowane pojazdy</a>
-        <a href="">Dodaj nowy pojazd</a>
+        <a href="{{ path('app_view_admin_cars_new-cars-view') }}">Dodaj nowy pojazd</a>
     </nav>
     {% block carBody %}{% endblock %}
 {% endblock %}
