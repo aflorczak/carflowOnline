@@ -80,13 +80,11 @@ class OrderService
             $findedOrder->setExternalCaseNumber($order->getExternalCaseNumber());
             $findedOrder->setProposedSegment($order->getProposedSegment());
             $findedOrder->setDeliveryAddress($order->getDeliveryAddress());
-            $findedOrder->setDeliveryDate($order->getDeliveryDate());
-            $findedOrder->setDeliveryTime($order->getDeliveryTime());
+            $findedOrder->setDeliveryDatetime($order->getDeliveryDatetime());
             $findedOrder->setDeliveryComments($order->getDeliveryComments());
             $findedOrder->setDeliveryBranch($order->getDeliveryBranch());
             $findedOrder->setReturnedAddress($order->getReturnedAddress());
-            $findedOrder->setReturnedDate($order->getReturnedDate());
-            $findedOrder->setReturnedTime($order->getReturnedTime());
+            $findedOrder->setReturnedDatetime($order->getReturnedDatetime());
             $findedOrder->setReturnedComments($order->getReturnedComments());
             $findedOrder->setReturnedBranch($order->getReturnedBranch());
             $findedOrder->setReasonForCancellingTheOrder($order->getReasonForCancellingTheOrder());

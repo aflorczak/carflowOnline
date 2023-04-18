@@ -36,11 +36,8 @@ class Order
     #[ORM\Column(length: 255)]
     private ?string $deliveryAddress = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $deliveryDate = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $deliveryTime = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $deliveryDatetime = null;
 
     #[ORM\Column(length: 255)]
     private ?string $deliveryComments = null;
@@ -51,11 +48,8 @@ class Order
     #[ORM\Column(length: 255)]
     private ?string $returnedAddress = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $returnedDate = null;
-
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $returnedTime = null;
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $returnedDatetime = null;
 
     #[ORM\Column(length: 255)]
     private ?string $returnedComments = null;
@@ -63,7 +57,7 @@ class Order
     #[ORM\Column(length: 255)]
     private ?string $returnedBranch = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $reasonForCancellingTheOrder = null;
 
     public function getId(): ?int
@@ -162,26 +156,14 @@ class Order
         return $this;
     }
 
-    public function getDeliveryDate(): ?\DateTimeInterface
+    public function getDeliveryDatetime(): ?\DateTimeInterface
     {
-        return $this->deliveryDate;
+        return $this->deliveryDatetime;
     }
 
-    public function setDeliveryDate(\DateTimeInterface $deliveryDate): self
+    public function setDeliveryDatetime(\DateTimeInterface $deliveryDatetime): self
     {
-        $this->deliveryDate = $deliveryDate;
-
-        return $this;
-    }
-
-    public function getDeliveryTime(): ?\DateTimeInterface
-    {
-        return $this->deliveryTime;
-    }
-
-    public function setDeliveryTime(\DateTimeInterface $deliveryTime): self
-    {
-        $this->deliveryTime = $deliveryTime;
+        $this->deliveryDatetime = $deliveryDatetime;
 
         return $this;
     }
@@ -222,26 +204,14 @@ class Order
         return $this;
     }
 
-    public function getReturnedDate(): ?\DateTimeInterface
+    public function getReturnedDatetime(): ?\DateTimeInterface
     {
-        return $this->returnedDate;
+        return $this->returnedDatetime;
     }
 
-    public function setReturnedDate(\DateTimeInterface $returnedDate): self
+    public function setReturnedDatetime(\DateTimeInterface $returnedDatetime): self
     {
-        $this->returnedDate = $returnedDate;
-
-        return $this;
-    }
-
-    public function getReturnedTime(): ?\DateTimeInterface
-    {
-        return $this->returnedTime;
-    }
-
-    public function setReturnedTime(\DateTimeInterface $returnedTime): self
-    {
-        $this->returnedTime = $returnedTime;
+        $this->returnedDatetime = $returnedDatetime;
 
         return $this;
     }
@@ -275,7 +245,7 @@ class Order
         return $this->reasonForCancellingTheOrder;
     }
 
-    public function setReasonForCancellingTheOrder(string $reasonForCancellingTheOrder): self
+    public function setReasonForCancellingTheOrder(?string $reasonForCancellingTheOrder): self
     {
         $this->reasonForCancellingTheOrder = $reasonForCancellingTheOrder;
 

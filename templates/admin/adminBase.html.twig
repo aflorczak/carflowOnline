@@ -9,6 +9,7 @@
         Administracja<hr>
         <nav style="display: flex; justify-content: space-around; margin: 15px 0">
             <a href="{{ path('app_view_admin_dashboard_get-index') }}">Dashboard</a>
+            <a href="{{ path('app_view_admin_orders_get-orders-view') }}">Zlecenia</a>
             <a href="{{ path('app_view_admin_cars_get-cars-view') }}">Pojazdy</a>
         </nav>
         {% block adminBody %}{% endblock %}

@@ -25,9 +25,9 @@
                     <td>{{ order.principal }}</td>
                     <td>{{ order.externalCaseNumber }}</td>
                     <td>{{ order.internalCaseNumber }}</td>
-                    <td><a href=""><button>Pokaż</button></a></td>
-                    <td><a href=""><button>Edytuj</button></a></td>
-                    <td><a href=""><button>Usuń</button></a></td>
+                    <td><a href="{{ path('app_view_admin_orders_get-order-details-view', {id: order.id}) }}"><button>Pokaż</button></a></td>
+                    <td><a href="{{ path('app_view_admin_orders_edit-order-by-id', {id: order.id}) }}"><button>Edytuj</button></a></td>
+                    <td><a href="{{ path('app_view_admin_orders_remove-order-by-id', {id: order.id}) }}"><button>Usuń</button></a></td>
                 </tr>
             {% endfor %}
             </tbody>

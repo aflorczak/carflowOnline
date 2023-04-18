@@ -9,8 +9,7 @@
         <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=RETURNED">Zwrócone zlecenia przeznaczone do fakturowania</a>
         <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=ENDED">Zakończone zlecenia</a>
         <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=CANCELLED">Anulowane zlecenia</a>
-        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=ARCHIVED">Zarchiwizowane zlecenia</a>
-        <a href="">Dodaj nowe zlecenie</a>
+        <a href="{{ path('app_view_admin_orders_new-orders-view') }}">Dodaj nowe zlecenie</a>
     </nav>
     {% block orderBody %}{% endblock %}
 {% endblock %}

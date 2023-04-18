@@ -1,7 +1,7 @@
 {% extends 'admin/view/dashboard/dashboardBase.html.twig' %}
 
 {% block dashboardBody %}
-    <section class="information-about-class" style="background-color: rgba(170,170,170,0.26); padding: 15px; border-radius: 15px;">
+    <section class="information-about-cars" style="background-color: rgba(170,170,170,0.26); padding: 15px; border-radius: 15px; margin-bottom: 25px">
         Informacje o pojazdach
         <div style="display: flex; justify-content: center; text-align: center;">
             <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
@@ -26,4 +26,40 @@
             </div>
         </div>
     </section> <!-- .information-about-cars -->
+
+    <section class="information-about-orders" style="background-color: rgba(170,170,170,0.26); padding: 15px; border-radius: 15px; margin-bottom: 25px">
+        Informacje o zleceniach
+        <div style="display: flex; justify-content: center; text-align: center;">
+            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
+                WSZYSTKIE ZLECENIA<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ allOrders }}</span><br>
+                <a href="{{ path('app_view_admin_orders_get-orders-view') }}">Pokaż</a>
+            </div>
+            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
+                NOWE ZLECENIA<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ newOrders }}</span><br>
+                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=NEW">Pokaż</a>
+            </div>
+            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
+                ZLECENIA W TRAKCIE REALIZACJI<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ inProgressOrders }}</span><br>
+                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=IN_PROGRESS">Pokaż</a>
+            </div>
+            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
+                ZWRÓCONE ZLECENIA<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ returnedOrders }}</span><br>
+                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=RETURNED">Pokaż</a>
+            </div>
+            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
+                ZAKOŃCZONE ZLECENIA<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ endedOrders }}</span><br>
+                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=ENDED">Pokaż</a>
+            </div>
+            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
+                ANULOWANE ZLECENIA<br>
+                <span style="font-size: 125%; font-weight: bold;">{{ cancelledOrders }}</span><br>
+                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=CANCELLED">Pokaż</a>
+            </div>
+        </div>
+    </section> <!-- .information-about-orders -->
 {% endblock %}
