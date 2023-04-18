@@ -72,6 +72,7 @@ class OrderService
 
         if ($findedOrder)
         {
+            $findedOrder->setId($order->getId());
             $findedOrder->setStatus($order->getStatus());
             $findedOrder->setClientsData($order->getClientsData());
             $findedOrder->setPrincipal($order->getPrincipal());
