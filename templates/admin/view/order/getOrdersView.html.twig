@@ -1,0 +1,38 @@
+{% extends 'admin/view/order/orderBase.html.twig' %}
+
+{% block orderBody %}
+    {{ msg }} ({{ counter }})<br>
+
+    {% if orders %}
+        <table style="width: 100%; text-align: center;">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dane klientów</th>
+                <th>Segment</th>
+                <th>Zleceniodawca</th>
+                <th>Zewnętrzny numer sprawy</th>
+                <th>Wewnętrzny numer sprawy</th>
+                <th colspan="3">Akcje</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for order in orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.clientsData }}</td>
+                    <td>{{ order.proposedSegment }}</td>
+                    <td>{{ order.principal }}</td>
+                    <td>{{ order.externalCaseNumber }}</td>
+                    <td>{{ order.internalCaseNumber }}</td>
+                    <td><a href="{{ path('app_view_admin_orders_get-order-details-view', {id: order.id}) }}"><button>Pokaż</button></a></td>
+                    <td><a href="{{ path('app_view_admin_orders_edit-order-by-id', {id: order.id}) }}"><button>Edytuj</button></a></td>
+                    <td><a href="{{ path('app_view_admin_orders_remove-order-by-id', {id: order.id}) }}"><button>Usuń</button></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        Brak zleceń do wyświetlenia.
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'admin/view/order/orderBase.html.twig' %}
+
+{% block orderBody %}
+    Szczegóły zlecenia o numerze id: {{ id }}<hr><hr><hr>
+    {% if status == "NEW" %}
+        <div style="background-color: green;color: white; padding: 5px; border-radius: 5px; text-align: center;">
+            Nowe zlecenie.
+        </div>
+    {% endif %}
+
+    {% if status == "IN_PROGRESS" %}
+        <div style="background-color: dodgerblue; padding: 5px; border-radius: 5px; text-align: center;">
+            Zlecenie w trakcie realizacji.
+        </div>
+    {% endif %}
+
+    {% if status == "RETURNED" %}
+        <div style="background-color: dodgerblue; padding: 5px; border-radius: 5px; text-align: center;">
+            Zwrócone zlecenie przeznaczone do fakturowania.
+        </div>
+    {% endif %}
+
+    {% if status == "ENDED" %}
+        <div style="background-color: dodgerblue; padding: 5px; border-radius: 5px; text-align: center;">
+            Zakończone zlecenie.
+        </div>
+    {% endif %}
+
+    {% if status == "CANCELLED" %}
+        <div style="background-color: dodgerblue; padding: 5px; border-radius: 5px; text-align: center;">
+            Anulowane zlecenie.<br>
+            {{ reasonForCancellingTheOrder }}
+        </div>
+    {% endif %}
+
+    <div style="text-align: center;margin: 15px 0;">
+        <a href="{{ path('app_view_admin_orders_edit-order-by-id', {id: id}) }}"><button style="background-color: orange;">Edytuj</button></a>
+        <a href="{{ path('app_view_admin_orders_remove-order-by-id', {id: id}) }}"><button style="background-color: red; color: white;">Usuń</button></a>
+    </div>
+
+    <span style="font-size: 125%;">{{ internalCaseNumber }}</span> ( {{ externalCaseNumber }} )<br>
+    Dane klientów: {{ clientsData }}<br>
+    Zleceniodawca: {{ principal }}<br>
+    Proponowany segment: {{ proposedSegment }}<br>
+    <div style="display: flex;justify-content: space-around;">
+        <div style="background-color: #5eb5e0; margin: 25px; padding: 15px; border-radius: 15px;">
+            Szczegóły dostawy<hr>
+            Adres:<br>{{ deliveryAddress }}<br>
+            Data i godzina:<br>{{ deliveryDatetime }}<br>
+            Oddział realizujący:<br>{{ deliveryBranch }}<br>
+            Komentarz:<br>{{ deliveryComments }}
+        </div>
+        <div style="background-color: #5eb5e0; margin: 25px; padding: 15px; border-radius: 15px;">
+            Szczegóły odbioru<hr>
+            Adres:<br>{{ returnedAddress }}<br>
+            Data i godzina:<br>{{ returnedDatetime }}<br>
+            Oddział realizujący:<br>{{ returnedBranch }}<br>
+            Komentarz:<br>{{ returnedComments }}
+        </div>
+    </div>
+{% endblock %}

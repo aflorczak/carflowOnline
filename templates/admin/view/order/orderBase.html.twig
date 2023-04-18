@@ -1,0 +1,15 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block adminBody %}
+    Zlecenia<hr><hr>
+    <nav style="display: flex; justify-content: space-around; margin: 15px 0">
+        <a href="{{ path('app_view_admin_orders_get-orders-view') }}">Wszystkie zlecenia</a>
+        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=NEW">Nowe zlecenia</a>
+        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=IN_PROGRESS">Zlecenia w trakcie realizacji</a>
+        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=RETURNED">Zwrócone zlecenia przeznaczone do fakturowania</a>
+        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=ENDED">Zakończone zlecenia</a>
+        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=CANCELLED">Anulowane zlecenia</a>
+        <a href="{{ path('app_view_admin_orders_new-orders-view') }}">Dodaj nowe zlecenie</a>
+    </nav>
+    {% block orderBody %}{% endblock %}
+{% endblock %}
