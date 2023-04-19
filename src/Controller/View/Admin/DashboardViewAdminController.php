@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route("/admin")]
+#[Route("/panel-administratora")]
 class DashboardViewAdminController extends AbstractController
 {
     private CarService $carService;

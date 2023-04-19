@@ -4,14 +4,72 @@
         <meta charset="UTF-8">
         <title>{% block title %}Panel administracyjny{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('adminPanel') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('adminPanel') }}
+        {% endblock %}
     </head>
     <body>
-        Administracja<hr>
-        <nav style="display: flex; justify-content: space-around; margin: 15px 0">
-            <a href="{{ path('app_view_admin_dashboard_get-index') }}">Dashboard</a>
-            <a href="{{ path('app_view_admin_orders_get-orders-view') }}">Zlecenia</a>
-            <a href="{{ path('app_view_admin_cars_get-cars-view') }}">Pojazdy</a>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="{{ path('app_view_admin_dashboard_get-index') }}">CarFLOw ( PANEL ADMINISTRACYJNY )</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">SAMOCHODY <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('app_view_admin_cars_new-cars-view') }}">NOWY SAMOCHÓD</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ path('app_view_admin_cars_get-cars-view') }}">SAMOCHODY: WSZYSTKIE</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ACTIVE">SAMOCHODY: AKTYWNE</a></li>
+                                <li><a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=BLOCKED">SAMOCHODY: ZABLOKOWANE</a></li>
+                                <li><a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ARCHIVED">SAMOCHODY: ZARCHIWIZOWANE</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ZLECENIA <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('app_view_admin_orders_new-orders-view') }}">NOWE ZLECENIE</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ path('app_view_admin_orders_get-orders-view') }}">ZLECENIA: WSZYSTKIE</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=NEW">ZLECENIA: NOWE</a></li>
+                                <li><a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=IN_PROGRESS">ZLECENIA: W REALIZACJI</a></li>
+                                <li><a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=RETURNED">ZLECENIA: ZWRÓCONE, DO FAKTUROWANIA</a></li>
+                                <li><a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=ENDED">ZLECENIA: ZAKOŃCZONE</a></li>
+                                <li><a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=CANCELLED">ZLECENIA: ANULOWANE</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ADRIAN FLORCZAK <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">EDYTUJ PROFIL</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">WYLOGUJ SIĘ</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
         </nav>
+
         {% block adminBody %}{% endblock %}
     </body>
 </html>

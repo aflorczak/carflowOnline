@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route("/admin/orders")]
+#[Route("/panel-administratora/orders")]
 class OrderViewAdminController extends AbstractController
 {
     private OrderService $service;
@@ -56,32 +56,32 @@ class OrderViewAdminController extends AbstractController
             switch ($status)
             {
                 case "NEW":
-                    $statusPl = "NOWE ZLECENIA";
+                    $statusPl = "ZLECENIA: NOWE";
                     break;
                 case "CANCELLED":
-                    $statusPl = "ANULOWANE ZLECENIA";
+                    $statusPl = "ZLECENIA: ANULOWANE";
                     break;
                 case "IN_PROGRESS":
-                    $statusPl = "ZLECENIA W TRAKCIE REALIZACJI";
+                    $statusPl = "ZLECENIA: TRAKCIE REALIZACJI";
                     break;
                 case "RETURNED":
-                    $statusPl = "ZWRÓCONE ZLECENIA";
+                    $statusPl = "ZLECENIA: ZWRÓCONE, DO FAKTUROWANIA";
                     break;
                 case "ENDED":
-                    $statusPl = "ZAKOŃCZONE ZLECENIA";
+                    $statusPl = "ZLECENIA: ZAKOŃCZONE";
                     break;
                 case "ARCHIVED":
-                    $statusPl = "ZARCHIWIZOWANE ZLECENIA";
+                    $statusPl = "ZLECENIA: ZARCHIWIZOWANE";
                     break;
             }
 
-            $msg = "Zakres: " . $statusPl;
+            $msg = $statusPl;
         }
         else
         {
             $orders = $this->service->getOrdersByStatus();
             $counter = $this->service->getOrdersNumberByStatus();
-            $msg = "Zakres: WSZYSTKIE ZLECENIA";
+            $msg = "ZLECENIA: WSZYSTKIE";
         }
 
         return $this->render("admin/view/order/getOrdersView.html.twig", [
@@ -142,7 +142,7 @@ class OrderViewAdminController extends AbstractController
     public function removeOrderById(int $id): Response
     {
         $this->service->deleteOrderById($id);
-        return $this->redirect('/admin/orders');
+        return $this->redirect('/panel-administratora/orders');
     }
 
 }

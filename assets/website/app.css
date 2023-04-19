@@ -1,0 +1,24 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: transparent url('/public/static/img/cars.png') fixed no-repeat center center;
+    background-size: cover;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1 0 auto;
+}
+
+.footer {
+    flex-shrink: 0;
+}
+
+.navbar-custom {
+    margin-bottom: 0;
+}

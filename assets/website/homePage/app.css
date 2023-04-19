@@ -1,0 +1,8 @@
+/*
+    Zrobić porządek ze stylami na stronie HomePage i przenieść je do tego CCS
+*/
+
+.carousel-custom-header {
+    font-size: 150%;
+    font-weight: bold;
+}

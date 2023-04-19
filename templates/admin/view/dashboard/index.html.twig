@@ -1,65 +1,95 @@
-{% extends 'admin/view/dashboard/dashboardBase.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
-{% block dashboardBody %}
-    <section class="information-about-cars" style="background-color: rgba(170,170,170,0.26); padding: 15px; border-radius: 15px; margin-bottom: 25px">
-        Informacje o pojazdach
-        <div style="display: flex; justify-content: center; text-align: center;">
-            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
-                WSZYSTKIE POJAZDY<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ allCars }}</span><br>
-                <a href="{{ path('app_view_admin_cars_get-cars-view') }}">Pokaż</a>
-            </div>
-            <div style="background-color: green;color: white; margin: 15px; padding: 15px; border-radius: 15px;">
-                AKTYWNE POJAZDY<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ activeCars }}</span><br>
-                <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ACTIVE">Pokaż</a>
-            </div>
-            <div style="background-color: #e0b534; margin: 15px; padding: 15px; border-radius: 15px;">
-                ZABLOKOWANE POJAZDY<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ blockedCars }}</span><br>
-                <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=BLOCKED">Pokaż</a>
-            </div>
-            <div style="background-color: #fd5714; margin: 15px; padding: 15px; border-radius: 15px;">
-                POJAZDY W ARCHIWUM<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ archivedCars }}</span><br>
-                <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ARCHIVED">Pokaż</a>
+{% block adminBody %}
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="{{ path('app_view_website_get-home-page-view') }}">HOME</a></li>
+            <li class="active">PANEL ADMINISTRATORA</li>
+        </ol>
+    </div>
+    <div class="container-fluid">
+
+        <div class="jumbotron">
+            <h3>SAMOCHODY</h3>
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        WSZYSTKIE
+                        <div style="font-size: 125%; font-weight: bold;">{{ allCars }}</div>
+                        <a href="{{ path('app_view_admin_cars_get-cars-view') }}"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        AKTYWNE
+                        <div style="font-size: 125%; font-weight: bold;">{{ activeCars }}</div>
+                        <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ACTIVE"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        ZABLOKOWANE
+                        <div style="font-size: 125%; font-weight: bold;">{{ blockedCars }}</div>
+                        <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=BLOCKED"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+                <div class="col-md-3 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        ARCHIWUM
+                        <div style="font-size: 125%; font-weight: bold;">{{ archivedCars }}</div>
+                        <a href="{{ path('app_view_admin_cars_get-cars-view') }}?status=ARCHIVED"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section> <!-- .information-about-cars -->
 
-    <section class="information-about-orders" style="background-color: rgba(170,170,170,0.26); padding: 15px; border-radius: 15px; margin-bottom: 25px">
-        Informacje o zleceniach
-        <div style="display: flex; justify-content: center; text-align: center;">
-            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
-                WSZYSTKIE ZLECENIA<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ allOrders }}</span><br>
-                <a href="{{ path('app_view_admin_orders_get-orders-view') }}">Pokaż</a>
-            </div>
-            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
-                NOWE ZLECENIA<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ newOrders }}</span><br>
-                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=NEW">Pokaż</a>
-            </div>
-            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
-                ZLECENIA W TRAKCIE REALIZACJI<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ inProgressOrders }}</span><br>
-                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=IN_PROGRESS">Pokaż</a>
-            </div>
-            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
-                ZWRÓCONE ZLECENIA<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ returnedOrders }}</span><br>
-                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=RETURNED">Pokaż</a>
-            </div>
-            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
-                ZAKOŃCZONE ZLECENIA<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ endedOrders }}</span><br>
-                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=ENDED">Pokaż</a>
-            </div>
-            <div style="background-color: #5eb5e0; margin: 15px; padding: 15px; border-radius: 15px;">
-                ANULOWANE ZLECENIA<br>
-                <span style="font-size: 125%; font-weight: bold;">{{ cancelledOrders }}</span><br>
-                <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=CANCELLED">Pokaż</a>
+
+        <div class="jumbotron">
+            <h3>ZLECENIA</h3>
+            <div class="row">
+                <div class="col-md-2 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        WSZYSTKIE
+                        <div style="font-size: 125%; font-weight: bold;">{{ allOrders }}</div>
+                        <a href="{{ path('app_view_admin_orders_get-orders-view') }}"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        NOWE
+                        <div style="font-size: 125%; font-weight: bold;">{{ newOrders }}</div>
+                        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=NEW"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        W REALIZACJI
+                        <div style="font-size: 125%; font-weight: bold;">{{ inProgressOrders }}</div>
+                        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=IN_PROGRESS"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        ZWRÓCONE
+                        <div style="font-size: 125%; font-weight: bold;">{{ returnedOrders }}</div>
+                        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=RETURNED"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        ZAKOŃCZONE
+                        <div style="font-size: 125%; font-weight: bold;">{{ endedOrders }}</div>
+                        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=ENDED"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+                <div class="col-md-2 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        ANULOWANE
+                        <div style="font-size: 125%; font-weight: bold;">{{ cancelledOrders }}</div>
+                        <a href="{{ path('app_view_admin_orders_get-orders-view') }}?status=CANCELLED"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section> <!-- .information-about-orders -->
+    </div>
 {% endblock %}

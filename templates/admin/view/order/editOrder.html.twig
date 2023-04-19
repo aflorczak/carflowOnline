@@ -1,6 +1,16 @@
-{% extends 'admin/view/order/orderBase.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
-{% block orderBody %}
-    Edytuj zlecenie o numerze id: {{ id }}<hr>
-    {{ form(form) }}
+{% block adminBody %}
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="{{ path('app_view_website_get-home-page-view') }}">HOME</a></li>
+            <li><a href="{{ path('app_view_admin_dashboard_get-index') }}">PANEL ADMINISTRATORA</a></li>
+            <li><a href="{{ path('app_view_admin_orders_get-orders-view') }}">ZLECENIA: WSZYSTKIE</a></li>
+            <li><a href="{{ path('app_view_admin_orders_get-order-details-view', {id: id}) }}">SZCZEGÓŁY ZLECENIA O NUMERZE INDETYFIKACYJNYM {{ id }}</a></li>
+            <li class="active">EDYCJA ZLECENIA O NUMERZE IDENTYFIKACYJNYM: {{ id }}</li>
+        </ol>
+    </div>
+    <div class="container-fluid">
+        {{ form(form) }}
+    </div>
 {% endblock %}

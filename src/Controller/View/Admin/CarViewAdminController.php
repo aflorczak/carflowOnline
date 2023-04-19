@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route("/admin/cars")]
+#[Route("/panel-administratora/cars")]
 class CarViewAdminController extends AbstractController
 {
     private CarService $service;
@@ -68,23 +68,23 @@ class CarViewAdminController extends AbstractController
             switch ($status)
             {
                 case "ACTIVE":
-                    $statusPl = "AKTYWNE POJAZDY";
+                    $statusPl = "SAMOCHODY: AKTYWNE";
                     break;
                 case "BLOCKED":
-                    $statusPl = "ZABLOKOWANE POJAZDY";
+                    $statusPl = "SAMOCHODY: ZABLOKOWANE";
                     break;
                 case "ARCHIVED":
-                    $statusPl = "ZARCHIWIZOWANE POJAZDY";
+                    $statusPl = "SAMOCHODY: ZARCHIWIZOWANE";
                     break;
             }
 
-            $msg = "Zakres: " . $statusPl;
+            $msg = $statusPl;
         }
         else
         {
             $cars = $this->service->getCarsByStatus();
             $counter = $this->service->getCarsNumberByStatus();
-            $msg = "Zakres: WSZYSTKIE POJAZDY";
+            $msg = "SAMOCHODY: WSZYSTKIE";
         }
 
         return $this->render("admin/view/car/getCarsView.html.twig", [
@@ -131,6 +131,6 @@ class CarViewAdminController extends AbstractController
     public function removeCarById(int $id): Response
     {
         $this->service->deleteCarById($id);
-        return $this->redirect('/admin/cars');
+        return $this->redirect('/panel-administratora/cars');
     }
 }

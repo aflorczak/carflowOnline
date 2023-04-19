@@ -1,6 +1,16 @@
-{% extends 'admin/view/car/carBase.html.twig' %}
+{% extends 'admin/adminBase.html.twig' %}
 
-{% block carBody %}
-    Edytuj pojazd o numerze id: {{ id }}<hr>
-    {{ form(form) }}
+{% block adminBody %}
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="{{ path('app_view_website_get-home-page-view') }}">HOME</a></li>
+            <li><a href="{{ path('app_view_admin_dashboard_get-index') }}">PANEL ADMINISTRATORA</a></li>
+            <li><a href="{{ path('app_view_admin_cars_get-cars-view') }}">SAMOCHODY: WSZYSTKIE</a></li>
+            <li><a href="{{ path('app_view_admin_cars_get-car-details-view', {id: id}) }}">SZCZEGÓŁY POJAZDU O NUMERZE INDETYFIKACYJNYM {{ id }}</a></li>
+            <li class="active">EDYCJA POJAZDU O NUMERZE IDENTYFIKACYJNYM: {{ id }}</li>
+        </ol>
+    </div>
+    <div class="container-fluid">
+        {{ form(form) }}
+    </div>
 {% endblock %}
