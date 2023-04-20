@@ -37,6 +37,31 @@ class CarService
         return $this->repository->save($car, true);
     }
 
+    public function getCarsByParams(string $status = null, string $class = null): array
+    {
+        $response = null;
+
+        if ($status && $class)
+        {
+            $response = $this->repository->findBy(["status" => $status, "segment" => $class]);
+        }
+        else if($status && !$class)
+        {
+            $response = $this->repository->findBy(["status" => $status]);
+        }
+        else if (!$status && $class)
+        {
+            $response = $this->repository->findBy(["segment" => $class]);
+        }
+        else
+        {
+            $response = $this->repository->findAll();
+        }
+
+        return $response;
+
+    }
+
     public function getCarsByStatus(string $status = null): array
     {
         $response = null;

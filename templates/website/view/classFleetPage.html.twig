@@ -1,0 +1,70 @@
+{% extends 'website/websiteBase.html.twig' %}
+
+
+{% block title %}
+    {{ title }} | CarFLOw
+{% endblock %}
+
+
+{% block websiteBody %}
+    <div style="background-color: rgba(255,255,255,0.82); padding: 20px 0 0 0;">
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('app_view_website_get-home-page-view') }}">HOME</a></li>
+                <li><a href="{{ path('app_view_website_get-fleet-page-view') }}">FLOTA</a></li>
+                <li class="active">KLASA {{ class }}</li>
+            </ol>
+        </div>
+    </div>
+    <div style="background-color: rgba(255,255,255,0.82); padding: 25px 0;">
+        <div class="container-fluid">
+            <div style="border-radius: 4px; padding: 10px; background-color: rgba(255,255,255,0.82);">
+                <div class="row">
+                    <div class="col-md-4" style="font-size: 180%; text-align: center;">
+                        SEGMENT {{ class }}
+                    </div>
+                    <div class="col-md-8">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad, alias aliquid at aut culpa, dolorem enim error exercitationem expedita inventore magnam optio quasi quibusdam quo quod reiciendis rerum, tempore vero?
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab ad consequatur dolores eveniet veritatis. Assumenda at eligendi eos et itaque nam, officiis omnis perspiciatis possimus quae recusandae reiciendis vitae voluptas.
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus eos ex illo, in molestiae quidem sit soluta voluptatibus. Deserunt, excepturi exercitationem. At consectetur est, expedita in inventore itaque iure vero?
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias cupiditate iure, necessitatibus quia reprehenderit. Assumenda at debitis dolorum earum et itaque magni molestiae nisi nostrum, odio officiis provident quis!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% if cars %}
+        <div class="container-fluid" style="background-color: rgba(255,255,255,0.82); height: 100%;padding-top: 20px;">
+            <div class="row">
+                {% for car in cars %}
+                    <div class="col-md-3 text-center">
+                        <div class="thumbnail">
+                            <img src="https://fakeimg.pl/242x200/" alt="Zdjęcie pojazdu">
+                            <div class="caption">
+                                <h3>{{ car.brand }} {{ car.model }}</h3>
+                                <p>
+                                    RODZAJ PALIWA:<br>{{ car.fuel }} <br><br>
+                                    LICZBA MIEJSC:<br>{{ car.numberOfSeats }} <br><br>
+                                    LICZBA DRZWI:<br>{{ car.numberOfDoors }} <br><br>
+                                    ZABUDOWA:<br>{{ car.bodyType }}
+                                </p>
+                                <div>
+                                    <a href="#" class="btn btn-success" role="button">ZAREZERWUJ</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="container-fluid" style="background-color: rgba(255,255,255,0.82); height: 100%;padding-top: 20px;">
+            <div class="alert alert-danger" role="alert">
+                BRAK POJAZDÓW DO WYŚWIETLENIA
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

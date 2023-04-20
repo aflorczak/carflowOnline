@@ -7,5 +7,85 @@
 
 
 {% block websiteBody %}
-    Flota
+    <div style="background-color: rgba(255,255,255,0.82); padding: 20px 0 0 0;">
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('app_view_website_get-home-page-view') }}">HOME</a></li>
+                <li class="active">FLOTA</li>
+            </ol>
+        </div>
+    </div>
+
+    <div style="background-color: rgba(255,255,255,0.82); height: 100%">
+        <div class="container-fluid">
+            <div class="row" style="text-align: center; padding-bottom: 20px;">
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 style="font-weight: bold;">KLASA A</h3>
+                            <p>
+                                MAŁE AUTA MIEJSKIE
+                            </p>
+                            <p><a href="{{ path('app_view_website_get-class-fleet-page-view', {class: 'a'}) }}" class="btn btn-success" role="button">ZOBACZ OFERTĘ</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 style="font-weight: bold;">KLASA B</h3>
+                            <p>
+                                DUŻE AUTA MIEJSKIE
+                            </p>
+                            <p><a href="{{ path('app_view_website_get-class-fleet-page-view', {class: 'b'}) }}" class="btn btn-success" role="button">ZOBACZ OFERTĘ</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 style="font-weight: bold;">KLASA C</h3>
+                            <p>
+                                UNIWERSALNE KOMPAKTY
+                            </p>
+                            <p><a href="{{ path('app_view_website_get-class-fleet-page-view', {class: 'c'}) }}" class="btn btn-success" role="button">ZOBACZ OFERTĘ</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 style="font-weight: bold;">KLASA D</h3>
+                            <p>
+                                WYGODNE AUTA RODZINNE
+                            </p>
+                            <p><a href="{{ path('app_view_website_get-class-fleet-page-view', {class: 'd'}) }}" class="btn btn-success" role="button">ZOBACZ OFERTĘ</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 style="font-weight: bold;">KLASA J</h3>
+                            <p>
+                                NA KAŻDĄ DROGĘ
+                            </p>
+                            <p><a href="{{ path('app_view_website_get-class-fleet-page-view', {class: 'j'}) }}" class="btn btn-success" role="button">ZOBACZ OFERTĘ</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <h3 style="font-weight: bold;">KLASA M</h3>
+                            <p>
+                                DUŻE I WYGODNE
+                            </p>
+                            <p><a href="{{ path('app_view_website_get-class-fleet-page-view', {class: 'm'}) }}" class="btn btn-success" role="button">ZOBACZ OFERTĘ</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
