@@ -1,0 +1,28 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block adminBody %}
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="{{ path('app_view_website_get-home-page-view') }}">HOME</a></li>
+            <li><a href="{{ path('app_view_admin_dashboard_get-index') }}">PANEL ADMINISTRATORA</a></li>
+            <li><a href="{{ path('app_view_admin_branches_get-branches-view') }}">ODDZIAŁY: WSZYSTKIE</a></li>
+            <li class="active">SZCZEGÓŁY ZLECENIA O NUMERZE IDENTYFIKACYJNYM: {{ branch.id }}</li>
+        </ol>
+    </div>
+    <div class="container-fluid">
+        <div style="text-align: center;margin: 15px 0;">
+            <a href="{{ path('app_view_admin_branches_edit-branch-by-id', {id: branch.id}) }}"><button style="background-color: orange;">Edytuj</button></a>
+            <a href="{{ path('app_view_admin_branches_remove-branch-by-id', {id: branch.id}) }}"><button style="background-color: red; color: white;">Usuń</button></a>
+        </div>
+        Oddział:<br>
+        {{ branch.name }}<br><br>
+        Slug:<br>
+        {{ branch.slug }}<br><br>
+        Adres:<br>
+        {{ branch.addressFirstLine }}<br>
+        {% if branch.addressSecondLine %}
+            {{ branch.addressSecondLine }}<br>
+        {% endif %}
+        {{ branch.postCode }} {{ branch.city }}
+    </div>
+{% endblock %}

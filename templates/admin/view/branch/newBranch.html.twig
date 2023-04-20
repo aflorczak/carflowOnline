@@ -1,0 +1,15 @@
+{% extends 'admin/adminBase.html.twig' %}
+
+{% block adminBody %}
+    <div class="container-fluid">
+        <ol class="breadcrumb">
+            <li><a href="{{ path('app_view_website_get-home-page-view') }}">HOME</a></li>
+            <li><a href="{{ path('app_view_admin_dashboard_get-index') }}">PANEL ADMINISTRATORA</a></li>
+            <li><a href="{{ path('app_view_admin_branches_get-branches-view') }}">ODDZIAŁY: WSZYSTKIE</a></li>
+            <li class="active">UTWÓRZ NOWY ODDZIAŁ</li>
+        </ol>
+    </div>
+    <div class="container-fluid">
+        {{ form(form) }}
+    </div>
+{% endblock %}
