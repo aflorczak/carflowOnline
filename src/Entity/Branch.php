@@ -35,6 +35,21 @@ class Branch
     #[ORM\Column(type: Types::ARRAY)]
     private array $cars = [];
 
+    #[ORM\Column(length: 255)]
+    private ?string $imgSrc = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $navLink = null;
+
+    #[ORM\Column(length: 500)]
+    private ?string $mapLink = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 30)]
+    private ?string $phone = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -127,6 +142,66 @@ class Branch
     public function setCars(array $cars): self
     {
         $this->cars = $cars;
+
+        return $this;
+    }
+
+    public function getImgSrc(): ?string
+    {
+        return $this->imgSrc;
+    }
+
+    public function setImgSrc(string $imgSrc): self
+    {
+        $this->imgSrc = $imgSrc;
+
+        return $this;
+    }
+
+    public function getNavLink(): ?string
+    {
+        return $this->navLink;
+    }
+
+    public function setNavLink(string $navLink): self
+    {
+        $this->navLink = $navLink;
+
+        return $this;
+    }
+
+    public function getMapLink(): ?string
+    {
+        return $this->mapLink;
+    }
+
+    public function setMapLink(string $mapLink): self
+    {
+        $this->mapLink = $mapLink;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }

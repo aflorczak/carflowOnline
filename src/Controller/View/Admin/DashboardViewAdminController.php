@@ -2,6 +2,7 @@
 
 namespace App\Controller\View\Admin;
 
+use App\Service\BranchService;
 use App\Service\CarService;
 use App\Service\OrderService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,14 +13,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class DashboardViewAdminController extends AbstractController
 {
     private CarService $carService;
+    private BranchService $branchService;
     private OrderService $orderService;
 
     public function __construct(
         CarService $carService,
+        BranchService $branchService,
         OrderService $orderService
     )
     {
         $this->carService = $carService;
+        $this->branchService = $branchService;
         $this->orderService = $orderService;
     }
 
@@ -30,6 +34,8 @@ class DashboardViewAdminController extends AbstractController
         $activeCars = $this->carService->getCarsNumberByStatus('ACTIVE');
         $blockedCars = $this->carService->getCarsNumberByStatus('BLOCKED');
         $archivedCars = $this->carService->getCarsNumberByStatus('ARCHIVED');
+
+        $allBranches = $this->branchService->getBranchesNumber();
 
         $allOrders = $this->orderService->getOrdersNumberByStatus();
         $newOrders = $this->orderService->getOrdersNumberByStatus('NEW');
@@ -43,6 +49,7 @@ class DashboardViewAdminController extends AbstractController
             "activeCars" => $activeCars,
             "blockedCars" => $blockedCars,
             "archivedCars" => $archivedCars,
+            "allBranches" => $allBranches,
             "allOrders" => $allOrders,
             "newOrders" => $newOrders,
             "inProgressOrders" => $inProgressOrders,

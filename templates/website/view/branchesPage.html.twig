@@ -7,5 +7,56 @@
 
 
 {% block websiteBody %}
-    Oddziały
+    <div style="background-color: rgba(255,255,255,0.82); padding: 20px 0 0 0;">
+        <div class="container-fluid">
+            <ol class="breadcrumb">
+                <li><a href="{{ path('app_view_website_get-home-page-view') }}">HOME</a></li>
+                <li class="active">ODDZIAŁY</li>
+            </ol>
+        </div>
+    </div>
+
+    <div style="background-color: rgba(255,255,255,0.82); height: 100%">
+        <div class="container-fluid">
+            {% for branch in branches %}
+                <div style="margin-bottom: 20px; border-radius: 4px; padding: 10px; background-color: rgba(255,255,255,0.82);">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <div style="font-size: 150%; font-weight: bold;">
+                                    {{ branch.name }}
+                                </div>
+                                {{ branch.addressFirstLine }}<br>
+                                {% if branch.addressSecondLine %}<br>
+                                    {{ branch.addressSecondLine }}<br>
+                                {% endif %}
+                                {{ branch.postCode }} {{ branch.city }}<br><br>
+                                Telefon:<br><a href="tel:{{ branch.phone }}">{{ branch.phone }}</a><br>
+                                E-mail:<a href="mailto:{{ branch.email }}">{{ branch.email }}</a><br><br>
+                                <a href="{{ branch.navLink }}" target="_blank">
+                                    <button class="btn btn-success">
+                                        NAWIGUJ
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <img src="{{ branch.imgSrc }}" alt="..." style="width: 100%; height: 300px;">
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="font-size: 180%; text-align: center;">
+                            <iframe src="{{ branch.mapLink }}" width="100%" height="300px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            {% else %}
+                <div class="alert alert-danger" role="alert">
+                    BRAK ODDZIAŁÓW DO WYŚWIETLENIA
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
 {% endblock %}

@@ -23,6 +23,11 @@
         {% if branch.addressSecondLine %}
             {{ branch.addressSecondLine }}<br>
         {% endif %}
-        {{ branch.postCode }} {{ branch.city }}
+        {{ branch.postCode }} {{ branch.city }}<br><br>
+        Email:<br>
+        {{ branch.email }}<br><br>
+        Numer telefonu:<br>
+        {{ branch.phone }}<br><br>
+        <img src="{{ branch.imgSrc }}" alt="" style="height: 300px; width: auto;"><br><br>
     </div>
 {% endblock %}

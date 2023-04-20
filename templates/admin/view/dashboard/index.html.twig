@@ -43,6 +43,18 @@
             </div>
         </div>
 
+        <div class="jumbotron">
+            <h3>ODDZIAŁY</h3>
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <div style="background-color: #d9edf7;color: #31708f; margin: 15px; padding: 15px; border-radius: 15px;">
+                        WSZYSTKIE
+                        <div style="font-size: 125%; font-weight: bold;">{{ allBranches }}</div>
+                        <a href="{{ path('app_view_admin_branches_get-branches-view') }}"><button type="button" class="btn btn-success btn-xs">POKAŻ</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="jumbotron">
             <h3>ZLECENIA</h3>

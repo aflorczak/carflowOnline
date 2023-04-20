@@ -72,6 +72,11 @@ class BranchService
             $updatedBranch->setAddressSecondLine($branch->getAddressSecondLine());
             $updatedBranch->setPostCode($branch->getPostCode());
             $updatedBranch->setCity($branch->getCity());
+            $updatedBranch->setImgSrc($branch->getImgSrc());
+            $updatedBranch->setNavLink($branch->getNavLink());
+            $updatedBranch->setMapLink($branch->getMapLink());
+            $updatedBranch->setEmail($branch->getEmail());
+            $updatedBranch->setPhone($branch->getPhone());
 
             return $this->repository->save($updatedBranch, true);
         }

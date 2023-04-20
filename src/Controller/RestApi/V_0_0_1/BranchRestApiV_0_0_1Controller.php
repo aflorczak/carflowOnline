@@ -30,6 +30,11 @@ class BranchRestApiV_0_0_1Controller extends AbstractController
         $addressSecondLine = $data['addressSecondLine'];
         $postCode = $data['postCode'];
         $city = $data['city'];
+        $navLink = $data['navLink'];
+        $mapLink = $data['mapLink'];
+        $imgSrc = $data['imgSrc'];
+        $email = $data['email'];
+        $phone = $data['phone'];
         $cars = array();
 
         // tutaj miejsce na funkcje walidacji
@@ -43,6 +48,11 @@ class BranchRestApiV_0_0_1Controller extends AbstractController
         $newBranch->setPostCode($postCode);
         $newBranch->setCity($city);
         $newBranch->setCars($cars);
+        $newBranch->setNavLink($navLink);
+        $newBranch->setMapLink($mapLink);
+        $newBranch->setImgSrc($imgSrc);
+        $newBranch->setEmail($email);
+        $newBranch->setPhone($phone);
 
         $addedBranch = $this->service->createNewBranch($newBranch);
 
@@ -88,6 +98,11 @@ class BranchRestApiV_0_0_1Controller extends AbstractController
         $addressSecondLine = $data['addressSecondLine'];
         $postCode = $data['postCode'];
         $city = $data['city'];
+        $navLink = $data['navLink'];
+        $mapLink = $data['mapLink'];
+        $imgSrc = $data['imgSrc'];
+        $email = $data['email'];
+        $phone = $data['phone'];
 
         // tutaj miejsce na funkcje walidacji
         // sprawdzić czy nie istnieje już oddział o podanym slug, jak tak to zablokować operacje
@@ -100,6 +115,11 @@ class BranchRestApiV_0_0_1Controller extends AbstractController
         $updateBranch->setAddressSecondLine($addressSecondLine);
         $updateBranch->setPostCode($postCode);
         $updateBranch->setCity($city);
+        $updateBranch->setNavLink($navLink);
+        $updateBranch->setMapLink($mapLink);
+        $updateBranch->setImgSrc($imgSrc);
+        $updateBranch->setEmail($email);
+        $updateBranch->setPhone($phone);
 
         $updatedBranch = $this->service->updateBranchById($updateBranch);
 

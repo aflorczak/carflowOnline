@@ -31,6 +31,21 @@ class BranchType extends AbstractType
             ->add('city', TextType::class, [
                 'label' => 'Miasto'
             ])
+            ->add('imgSrc', TextType::class, [
+                'label' => "URL do zdjęcia"
+            ])
+            ->add('navLink', TextType::class, [
+                'label' => 'URL linka nawigacyjnego'
+            ])
+            ->add('mapLink', TextType::class, [
+                'label' => 'URL linka do mapy'
+            ])
+            ->add('email', TextType::class, [
+                'label' => 'Email'
+            ])
+            ->add('phone', TextType::class, [
+                'label' => 'Numer telefonu'
+            ])
             ->add('save', SubmitType::class, ['label' => 'Zapisz']);
     }
 }
