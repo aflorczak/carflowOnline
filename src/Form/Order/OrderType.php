@@ -3,6 +3,7 @@
 namespace App\Form\Order;
 
 use App\Service\BranchService;
+use App\Service\CarService;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -14,15 +15,34 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class OrderType extends AbstractType
 {
     private array $branches = [];
+    private array $vehicles = ["BRAK" => null];
 
-    public function __construct(BranchService $service)
+    public function __construct(BranchService $branchService, CarService $carService)
     {
-        $branchesData = $service->getAllBranches();
+        $branchesData = $branchService->getAllBranches();
+        $carsData = $carService->getCarsByStatus('ACTIVE');
+
         foreach ($branchesData as $branch)
         {
             $label = $branch->getName() . ", " . $branch->getAddressFirstLine() . ", " . $branch->getPostCode() . " " . $branch->getCity();
             $value = $branch->getSlug();
             $this->branches += [$label => $value];
+        }
+
+        foreach ($carsData as $car)
+        {
+            $label =
+                'ID: ' .$car->getId() . ', ' .
+                $car->getBrand() . ' ' .
+                $car->getModel() . ' (' .
+                $car->getSegment() . '), ' .
+                $car->getBodyType() . ', ' .
+                $car->getFuel() . ', ' .
+                'LICZBA MIEJSC ' . $car->getNumberOfSeats() . ', ' .
+                'LICZBA DRZWI ' . $car->getNumberOfDoors() . ', ' .
+                'VIN: ' . $car->getVin();
+            $value = $car->getId();
+            $this->vehicles += [$label => $value];
         }
     }
 
@@ -46,9 +66,11 @@ class OrderType extends AbstractType
                 'B' => 'B',
                 'C' => 'C',
                 'D' => 'D',
-                'SUV' => 'SUV'
+                'J' => 'J',
+                'M' => 'M'
             ],
-            'branches' => $this->branches
+            'branches' => $this->branches,
+            'vehicles' => $this->vehicles
         ]);
     }
 
@@ -60,8 +82,12 @@ class OrderType extends AbstractType
                 'choices' => $options['statuses'],
                 'label' => 'STATUS'
             ])
-            ->add('clientsData', TextType::class, [
-                'label' => 'Dane klientów'
+            ->add('proposedSegment', ChoiceType::class, [
+                'choices' => $options['segments'],
+                'label'=> 'Proponowany segment'
+            ])
+            ->add('bookedVehicle', ChoiceType::class, [
+                'choices' => $options['vehicles']
             ])
             ->add('principal', ChoiceType::class, [
                 'choices' => $options['principals'],
@@ -73,9 +99,8 @@ class OrderType extends AbstractType
             ->add('externalCaseNumber', TextType::class, [
                 'label' => 'Zewnętrzny numer sprawy'
             ])
-            ->add('proposedSegment', ChoiceType::class, [
-                'choices' => $options['segments'],
-                'label'=> 'Proponowany segment'
+            ->add('clientsData', TextType::class, [
+                'label' => 'Dane klientów'
             ])
             ->add('deliveryAddress', TextType::class, [
                 'label' => 'Adres wydania'

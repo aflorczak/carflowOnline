@@ -88,6 +88,7 @@ class OrderService
             $findedOrder->setReturnedComments($order->getReturnedComments());
             $findedOrder->setReturnedBranch($order->getReturnedBranch());
             $findedOrder->setReasonForCancellingTheOrder($order->getReasonForCancellingTheOrder());
+            $findedOrder->setBookedVehicle($order->getBookedVehicle());
 
             return $this->repository->save($findedOrder, true);
         }

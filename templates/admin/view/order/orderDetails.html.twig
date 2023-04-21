@@ -48,6 +48,11 @@
        </div>
 
        <span style="font-size: 125%;">{{ internalCaseNumber }}</span> ( {{ externalCaseNumber }} )<br>
+       {% if bookedVehicle %}
+           Zarezerwowany pojazd: {{ bookedVehicle }}<br>
+       {% else %}
+           Brak zarezerwowanego pojazdu<br>
+       {% endif %}
        Dane klientów: {{ clientsData }}<br>
        Zleceniodawca: {{ principal }}<br>
        Proponowany segment: {{ proposedSegment }}<br>

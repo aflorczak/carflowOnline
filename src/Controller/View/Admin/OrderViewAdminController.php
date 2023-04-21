@@ -4,9 +4,7 @@ namespace App\Controller\View\Admin;
 
 use App\Entity\Order;
 use App\Form\Order\OrderType;
-use App\Service\BranchService;
 use App\Service\OrderService;
-use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -114,7 +112,8 @@ class OrderViewAdminController extends AbstractController
 			"returnedDatetime" => $order->getReturnedDatetime()->format('d/m/Y, H:i:s'),
 			"returnedComments" => $order->getReturnedComments(),
 			"returnedBranch" => $order->getReturnedBranch(),
-			"reasonForCancellingTheOrder" => $order->getReasonForCancellingTheOrder()
+			"reasonForCancellingTheOrder" => $order->getReasonForCancellingTheOrder(),
+            "bookedVehicle" => $order->getBookedVehicle()
         ]);
     }
 

@@ -60,6 +60,9 @@ class Order
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $reasonForCancellingTheOrder = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $bookedVehicle = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -248,6 +251,18 @@ class Order
     public function setReasonForCancellingTheOrder(?string $reasonForCancellingTheOrder): self
     {
         $this->reasonForCancellingTheOrder = $reasonForCancellingTheOrder;
+
+        return $this;
+    }
+
+    public function getBookedVehicle(): ?int
+    {
+        return $this->bookedVehicle;
+    }
+
+    public function setBookedVehicle(?int $bookedVehicle): self
+    {
+        $this->bookedVehicle = $bookedVehicle;
 
         return $this;
     }

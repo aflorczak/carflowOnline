@@ -62,6 +62,7 @@ class OrderRestApiV_0_0_1Controller extends AbstractController
         $returnedComments = $data['returnedComments'];
         $returnedBranch = $data['returnedBranch'];
         $reasonForCancellingTheOrder = $data['reasonForCancellingTheOrder'];
+        $bookedVehicle = $data['bookedVehicle'];
 
         // tutaj miejsce na funkcje walidacji
 
@@ -81,6 +82,7 @@ class OrderRestApiV_0_0_1Controller extends AbstractController
         $newOrder->setReturnedComments($returnedComments);
         $newOrder->setReturnedBranch($returnedBranch);
         $newOrder->setReasonForCancellingTheOrder($reasonForCancellingTheOrder);
+        $newOrder->setBookedVehicle($bookedVehicle);
 
         $addedOrder = $this->service->createNewOrder($newOrder);
 
@@ -145,6 +147,7 @@ class OrderRestApiV_0_0_1Controller extends AbstractController
         $returnedComments = $data['returnedComments'];
         $returnedBranch = $data['returnedBranch'];
         $reasonForCancellingTheOrder = $data['reasonForCancellingTheOrder'];
+        $bookedVehicle = $data['bookedVehicle'];
 
         // tutaj miejsce na funkcje walidacji
 
@@ -165,6 +168,7 @@ class OrderRestApiV_0_0_1Controller extends AbstractController
         $updateOrder->setReturnedComments($returnedComments);
         $updateOrder->setReturnedBranch($returnedBranch);
         $updateOrder->setReasonForCancellingTheOrder($reasonForCancellingTheOrder);
+        $updateOrder->setBookedVehicle($bookedVehicle);
 
         $updatedOrder = $this->service->updateOrderById($updateOrder);
 
