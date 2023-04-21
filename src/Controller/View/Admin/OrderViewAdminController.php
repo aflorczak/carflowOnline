@@ -4,6 +4,7 @@ namespace App\Controller\View\Admin;
 
 use App\Entity\Order;
 use App\Form\Order\OrderType;
+use App\Service\BranchService;
 use App\Service\OrderService;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,6 +26,7 @@ class OrderViewAdminController extends AbstractController
     public function newOrdersView(Request $request): Response
     {
         $order = new Order();
+
 
         $form = $this->createForm(OrderType::class, $order);
 
@@ -121,7 +123,9 @@ class OrderViewAdminController extends AbstractController
     {
         $order = $this->service->getOrderById($id);
 
-        $form = $this->createForm(OrderType::class, $order);
+        $form = $this->createForm(OrderType::class, $order, [
+
+        ]);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
