@@ -109,6 +109,7 @@ class CarService
             $findedCar->setFuel($car->getFuel());
             $findedCar->setBodyType($car->getBodyType());
             $findedCar->setSegment($car->getSegment());
+            $findedCar->setCurrentBranch($car->getCurrentBranch());
 
             return $this->repository->save($findedCar, true);
         }

@@ -18,6 +18,7 @@ Encore
 
     .addEntry('website', './assets/website/app.js')
     .addEntry('website_homePage', './assets/website/homePage/app.js')
+    .addEntry('website_reservationPage', './assets/website/reservationPage/app.js')
     .addEntry('adminPanel', './assets/adminPanel/app.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
@@ -58,7 +59,7 @@ Encore
     //.enableTypeScriptLoader()
 
     // uncomment if you use React
-    //.enableReactPreset()
+    .enableReactPreset()
 
     // uncomment to get integrity="..." attributes on your script & link tags
     // requires WebpackEncoreBundle 1.4 or higher

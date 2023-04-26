@@ -18,6 +18,7 @@
                     <thead>
                     <tr>
                         <th class="text-center">Id</th>
+                        <th class="text-center">Aktualny oddział</th>
                         <th class="text-center">Marka</th>
                         <th class="text-center">Model</th>
                         <th class="text-center">Nadwozie</th>
@@ -29,6 +30,7 @@
                     {% for car in cars %}
                         <tr>
                             <td>{{ car.id }}</td>
+                            <td>{{ car.currentBranch }}</td>
                             <td>{{ car.brand }}</td>
                             <td>{{ car.model }}</td>
                             <td>{{ car.bodyType }}</td>

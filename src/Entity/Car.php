@@ -54,6 +54,9 @@ class Car
     #[ORM\Column(length: 50)]
     private ?string $segment = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $currentBranch = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -182,6 +185,18 @@ class Car
     public function setSegment(string $segment): self
     {
         $this->segment = $segment;
+
+        return $this;
+    }
+
+    public function getCurrentBranch(): ?string
+    {
+        return $this->currentBranch;
+    }
+
+    public function setCurrentBranch(string $currentBranch): self
+    {
+        $this->currentBranch = $currentBranch;
 
         return $this;
     }

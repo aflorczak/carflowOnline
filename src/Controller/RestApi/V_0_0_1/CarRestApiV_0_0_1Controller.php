@@ -57,6 +57,7 @@ class CarRestApiV_0_0_1Controller extends AbstractController
         $numberOfDoors = $data['numberOfDoors'];
         $bodyType = $data['bodyType'];
         $segment = $data['segment'];
+        $currentBranch = $data['currentBranch'];
 
         // tutaj miejsce na funkcje walidacji
 
@@ -71,6 +72,7 @@ class CarRestApiV_0_0_1Controller extends AbstractController
         $newCar->setNumberOfDoors($numberOfDoors);
         $newCar->setBodyType($bodyType);
         $newCar->setSegment($segment);
+        $newCar->setCurrentBranch($currentBranch);
 
         $addedCar = $this->service->createNewCar($newCar);
 
@@ -130,6 +132,7 @@ class CarRestApiV_0_0_1Controller extends AbstractController
         $numberOfDoors = $data['numberOfDoors'];
         $bodyType = $data['bodyType'];
         $segment = $data['segment'];
+        $currentBranch = $data['currentBranch'];
 
         // tutaj miejsce na funkcje walidacji
 
@@ -145,6 +148,7 @@ class CarRestApiV_0_0_1Controller extends AbstractController
         $updateCar->setNumberOfDoors($numberOfDoors);
         $updateCar->setBodyType($bodyType);
         $updateCar->setSegment($segment);
+        $updateCar->setCurrentBranch($currentBranch);
 
         $updatedCar = $this->service->updateCarById($updateCar);
 

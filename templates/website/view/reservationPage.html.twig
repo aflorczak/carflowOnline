@@ -5,7 +5,26 @@
     {{ title }} | CarFLOw
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('website_reservationPage') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('website_reservationPage') }}
+{% endblock %}
+
 
 {% block websiteBody %}
-    Rezerwacja
+    <div style="background-color: rgba(255,255,255,0.82); height: 100%;">
+        <div class="container-fluid">
+            <div id="reservationApp">
+                Trwa ładowanie aplikacji do tworzenia rezerwacji.
+            </div>
+            <!--aplikacja react do rezerwacji, przesyła dane do strony  doborem dodatków,
+            tak jak z floty po dodaniu w nowym oknie informacji
+            uzupełniających to co już podane w rezerwacji przed podsumowaniem-->
+        </div>
+    </div>
 {% endblock %}

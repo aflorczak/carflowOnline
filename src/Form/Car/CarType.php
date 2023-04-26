@@ -3,6 +3,7 @@
 namespace App\Form\Car;
 
 use App\Form\Order\OrderType;
+use App\Service\BranchService;
 use Doctrine\DBAL\Types\IntegerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -10,9 +11,31 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CarType extends AbstractType
 {
+    private array $branches = [];
+
+    public function __construct(BranchService $branchService)
+    {
+        $branchesData = $branchService->getAllBranches();
+
+        foreach ($branchesData as $branch)
+        {
+            $label = $branch->getName();
+            $value = $branch->getName();
+            $this->branches += [$label => $value];
+        }
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'branches' => $this->branches,
+        ]);
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -22,6 +45,9 @@ class CarType extends AbstractType
                     'ZABLOKOWANY' => 'BLOCKED',
                     'ZARCHIWIZOWANY' => 'ARCHIVED'
                 ]
+            ])
+            ->add('currentBranch', ChoiceType::class, [
+                'choices' => $options['branches']
             ])
             ->add('brand', TextType::class)
             ->add('model', TextType::class)

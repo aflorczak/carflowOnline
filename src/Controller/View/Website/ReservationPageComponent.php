@@ -2,6 +2,7 @@
 
 namespace App\Controller\View\Website;
 
+use App\Form\Reservation\ReservationType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
